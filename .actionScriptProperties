@@ -68,7 +68,7 @@
       <airSettings airCertificatePath="" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
         <anePaths>
-          <anePathEntry path="libs/ANE-Network-info.ane"/>
+          <anePathEntry path="libs/FlashLight.ane"/>
         </anePaths>
         <newLaunchParams/>
         <modifiedLaunchParams/>
