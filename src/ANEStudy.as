@@ -1,5 +1,99 @@
 package
 {
+	import com.itpointlab.ane.ScreenWakeUp;
+	
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
+	import flash.events.Event;
+	import flash.geom.Rectangle;
+	
+	import starling.core.Starling;
+	import starling.utils.HAlign;
+	import starling.utils.RectangleUtil;
+	import starling.utils.ScaleMode;
+	import starling.utils.VAlign;
+	
+	import view.TabController;
+	
+	[SWF(width="640",height="960",frameRate="60",backgroundColor="#2f2f2f")]
+	public class ANEStudy extends Sprite
+	{
+		private var _starling:Starling;
+		private var _screen:ScreenWakeUp;
+		
+		public function ANEStudy()
+		{
+			if(stage)
+			{
+				stage.scaleMode = StageScaleMode.NO_SCALE;
+				stage.align = StageAlign.TOP_LEFT;
+			}
+			mouseEnabled = mouseChildren = false;
+			loaderInfo.addEventListener(Event.COMPLETE, onCompleteLoaderInfo);			
+		}
+		
+		private function onCompleteLoaderInfo(event:Event):void
+		{
+			_screen = new ScreenWakeUp;
+			_screen.lock(true);
+			
+			var viewPort:Rectangle = RectangleUtil.fit(
+				new Rectangle(0, 0, Constants.STAGE_WIDTH, Constants.STAGE_HEIGHT), 
+				new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight), 
+				ScaleMode.SHOW_ALL);
+			
+			Constants.SCALE_VECTOR = viewPort.width < 480 ? 1 : 2;
+			Constants.SCALE = 1 / Constants.SCALE_VECTOR;
+			
+			Starling.handleLostContext = true;
+			//Starling.multitouchEnabled = true;
+			_starling = new Starling(TabController, stage);
+			_starling.enableErrorChecking = false;
+			_starling.showStats = true;
+			_starling.showStatsAt(HAlign.LEFT, VAlign.BOTTOM);
+			_starling.start();
+			
+			
+			stage.addEventListener(Event.RESIZE, onResizeStage, false, int.MAX_VALUE, true);
+			stage.addEventListener(Event.DEACTIVATE, onDeactivateStage, false, 0, true);
+		}
+		
+		private function onResizeStage(event:Event):void
+		{
+			_starling.stage.stageWidth = stage.stageWidth;
+			_starling.stage.stageHeight = stage.stageHeight;
+			
+			const viewPort:Rectangle = _starling.viewPort;
+			viewPort.width = stage.stageWidth;
+			viewPort.height = stage.stageHeight;
+			try
+			{
+				_starling.viewPort = viewPort;
+			}
+			catch(error:Error) {}
+			//_starling.showStatsAt(HAlign.LEFT, VAlign.BOTTOM);
+		}
+		
+		private function onDeactivateStage(event:Event):void
+		{
+			_starling.stop();
+			stage.addEventListener(Event.ACTIVATE, onActivateStage, false, 0, true);
+		}
+		
+		private function onActivateStage(event:Event):void
+		{
+			stage.removeEventListener(Event.ACTIVATE, onActivateStage);
+			_starling.start();
+		}
+		
+		
+	}
+}
+
+/*
+package
+{
 	import com.danielfreeman.madcomponents.UIButton;
 	import com.itpointlab.ane.CustomObject;
 	import com.itpointlab.ane.FlashLight;
@@ -25,6 +119,7 @@ package
 		private var _button4:Object;
 		private var _buttonOn:Object;
 		private var _buttonOff:UIButton;
+		private var _buttonSum:UIButton;
 		
 		public function ANEStudy()
 		{
@@ -70,8 +165,19 @@ package
 			_buttonOff.scaleY = 2;
 			_buttonOff.addEventListener(MouseEvent.CLICK, onClickButtonOff);
 			
+			_buttonSum = new UIButton(this, 120, 750, "SUM");
+			_buttonSum.scaleX = 2;
+			_buttonSum.scaleY = 2;
+			_buttonSum.addEventListener(MouseEvent.CLICK, onClickButtonSUM);
+			
 			_flash = new FlashLight;
-			_flash.addEventListener(Event.CHANGE, onChange);
+			_flash.addEventListener(Event.ACTIVATE, onChange);
+			_flash.addEventListener(Event.DEACTIVATE, onChange);
+		}
+		
+		protected function onClickButtonSUM(event:MouseEvent):void
+		{
+			trace(_flash.nativeSum('steve.jobs', 11111));
 		}
 		
 		protected function onChange(event:Event):void
@@ -122,3 +228,4 @@ package
 		}
 	}
 }
+*/

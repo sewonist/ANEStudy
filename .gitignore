@@ -1,6 +1,6 @@
 cert/
 *.svn
-
+*.ipa
 # Build and Release Folders
 bin/
 bin-debug/
