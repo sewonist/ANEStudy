@@ -43,14 +43,8 @@ package view
 			addChild(_container);
 			
 			var buttonData:Array = [
-				{label:'getBoolean', callback:onClickButtons },
-				{label:'getInt', callback:onClickButtons },
-				{label:'getString', callback:onClickButtons },
-				{label:'getArray', callback:onClickButtons },
-				{label:'getCustomObject', callback:onClickButtons },
 				{label:'Turn ON', callback:onClickButtonOn },
-				{label:'Turn OFF', callback:onClickButtonOff },
-				{label:'SUM', callback:onClickButtonSum }
+				{label:'Turn OFF', callback:onClickButtonOff }
 			];
 			
 			for each(var data:Object in buttonData){

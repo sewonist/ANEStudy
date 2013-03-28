@@ -46,13 +46,12 @@ package view
 			addChild(_tabBar);
 			_tabBar.dataProvider = new ListCollection(
 				[
-					{ label: "App", action: APP_SCREEN },
 					{ label: "Study", action: STUDY_SCREEN }
 				]);
 			_tabBar.validate();
 			layout(stage.stageWidth, stage.stageHeight);
 			
-			_navigator.showScreen(APP_SCREEN);
+			_navigator.showScreen(STUDY_SCREEN);
 			
 			_transitionManager = new TabBarSlideTransitionManager(_navigator, _tabBar);
 			_transitionManager.duration = 0.4;
