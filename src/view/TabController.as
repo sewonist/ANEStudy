@@ -38,7 +38,6 @@ package view
 			_navigator.addEventListener(Event.CHANGE, onChangeNavigator);
 			addChild(_navigator);
 			
-			_navigator.addScreen(APP_SCREEN, new ScreenNavigatorItem(AppScreen));
 			_navigator.addScreen(STUDY_SCREEN, new ScreenNavigatorItem(StudyScreen));
 			
 			_tabBar = new TabBar();

@@ -1,28 +1,21 @@
 package view
 {
-	import com.itpointlab.ane.CustomObject;
-	import com.itpointlab.ane.FlashLight;
-	
 	import feathers.controls.Button;
 	import feathers.controls.Screen;
 	import feathers.controls.ScrollContainer;
 	import feathers.controls.ScrollText;
 	import feathers.layout.VerticalLayout;
 	
-	import model.FlashLightProxy;
-	
 	import starling.events.Event;
 	
 	public class StudyScreen extends Screen
 	{
-		private var _flashLight:FlashLight;
 		private var _container:ScrollContainer;
 		
 		public function StudyScreen()
 		{
 			super();
 			
-			_flashLight = FlashLightProxy.instance.flashLight;
 		}
 		
 		override protected function initialize():void
@@ -74,43 +67,17 @@ package view
 		
 		protected function onClickButtons(event:Event):void
 		{
-			var button:Button = event.currentTarget as Button;
-			if(_flashLight.hasOwnProperty(button.label)){
-				var result:* = _flashLight[button.label]();
-				
-				if(result is CustomObject){
-					trace(result.name, result.id);
-				} else {
-					trace(result);
-				}
-			}
+			
 		}
 		
 		protected function onClickButtonOff(event:Event):void
 		{
-			if(_flashLight.isSupported){
-				_flashLight.turnOn = false;
-			} else {
-				trace("FlashLight is not supproted.");
-			}
+			
 		}
 		
 		protected function onClickButtonOn(event:Event):void
 		{
-			if(_flashLight.isSupported){
-				_flashLight.turnOn = true;
-			} else {
-				trace("FlashLight is not supproted.");
-			}
-		}
-		
-		protected function onClickButtonSum(event:Event):void
-		{
-			if(_flashLight.isSupported){
-				_flashLight.nativeSum('Steve Jobs', 1234567890);
-			} else {
-				trace("FlashLight is not supproted.");
-			}
+			
 		}
 		
 	}

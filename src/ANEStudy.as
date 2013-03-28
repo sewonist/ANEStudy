@@ -1,7 +1,5 @@
 package
 {
-	import com.itpointlab.ane.ScreenWakeUp;
-	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
@@ -9,10 +7,8 @@ package
 	import flash.geom.Rectangle;
 	
 	import starling.core.Starling;
-	import starling.utils.HAlign;
 	import starling.utils.RectangleUtil;
 	import starling.utils.ScaleMode;
-	import starling.utils.VAlign;
 	
 	import view.TabController;
 	
@@ -20,7 +16,6 @@ package
 	public class ANEStudy extends Sprite
 	{
 		private var _starling:Starling;
-		private var _screen:ScreenWakeUp;
 		
 		public function ANEStudy()
 		{
@@ -35,8 +30,6 @@ package
 		
 		private function onCompleteLoaderInfo(event:Event):void
 		{
-			_screen = new ScreenWakeUp;
-			_screen.lock(true);
 			
 			var viewPort:Rectangle = RectangleUtil.fit(
 				new Rectangle(0, 0, Constants.STAGE_WIDTH, Constants.STAGE_HEIGHT), 

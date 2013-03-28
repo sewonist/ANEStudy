@@ -283,9 +283,5 @@
 			</array>
 		]]></InfoAdditions>
     </iPhone>
-<extensions>
-        <extensionID>com.itpointlab.ane.FlashLight</extensionID>
-    
-    <extensionID>com.itpointlab.ane.ScreenWakeUp</extensionID>
-    </extensions>
+
 </application>
