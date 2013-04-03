@@ -284,4 +284,7 @@
 		]]></InfoAdditions>
     </iPhone>
 
+<extensions>
+        <extensionID>com.itpointlab.ane.FlashLight</extensionID>
+    </extensions>
 </application>

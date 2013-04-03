@@ -1,5 +1,7 @@
 package view
 {
+	import com.itpointlab.ane.FlashLight;
+	
 	import feathers.controls.Button;
 	import feathers.controls.Screen;
 	import feathers.controls.ScrollContainer;
@@ -12,9 +14,13 @@ package view
 	{
 		private var _container:ScrollContainer;
 		
+		private var _flashLight:FlashLight;
+		
 		public function StudyScreen()
 		{
 			super();
+			
+			_flashLight = new FlashLight;
 			
 		}
 		
@@ -25,7 +31,7 @@ package view
 			vLayout.verticalAlign = VerticalLayout.VERTICAL_ALIGN_TOP;
 			vLayout.gap = 20 * Constants.SCALE;
 			vLayout.paddingTop = vLayout.paddingBottom = 16 * Constants.SCALE;
-			vLayout.paddingLeft = 50 * Constants.SCALE;
+			vLayout.paddingLeft = 15 * Constants.SCALE;
 			
 			_container = new ScrollContainer;
 			_container.verticalScrollPolicy = ScrollText.SCROLL_POLICY_ON;
@@ -36,8 +42,7 @@ package view
 			addChild(_container);
 			
 			var buttonData:Array = [
-				{label:'Turn ON', callback:onClickButtonOn },
-				{label:'Turn OFF', callback:onClickButtonOff }
+				{label:'isSupport', callback:onClickSupport }
 			];
 			
 			for each(var data:Object in buttonData){
@@ -47,7 +52,6 @@ package view
 			
 			super.initialize();
 		}
-		
 		override protected function draw():void
 		{
 			_container.width = actualWidth;
@@ -55,7 +59,6 @@ package view
 			
 			super.draw();
 		}
-		
 		private function factoryButton(label:String, callback:Function):Button
 		{
 			var button:Button = new Button;
@@ -64,21 +67,9 @@ package view
 			
 			return button;
 		}
-		
-		protected function onClickButtons(event:Event):void
+		protected function onClickSupport(event:Event):void
 		{
 			
 		}
-		
-		protected function onClickButtonOff(event:Event):void
-		{
-			
-		}
-		
-		protected function onClickButtonOn(event:Event):void
-		{
-			
-		}
-		
 	}
 }
