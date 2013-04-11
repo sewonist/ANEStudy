@@ -35,6 +35,7 @@
         </excludedEntries>
       </libraryPathEntry>
       <libraryPathEntry kind="1" linkType="1" path="libs"/>
+      <libraryPathEntry kind="5" linkType="2" path="libs/AdPOPcornExtension.ane"/>
       <libraryPathEntry kind="5" linkType="2" path="libs/FlashLight.ane"/>
     </libraryPath>
     <sourceAttachmentPath/>
@@ -49,12 +50,12 @@
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
   <buildTargets>
-    <buildTarget buildTargetName="device" iosSettingsVersion="2" isCurrent="true" platformId="com.adobe.flexide.multiplatform.ios.platform" provisioningFile="/Users/sewonist/Desktop/Workspace/00.itpointlab/Google Drive/StudyGroup/it.4/ANEStudy/cert/MobileAR_dev.mobileprovision" releasePackageType="ipa-app-store">
-      <airSettings airCertificatePath="/Users/sewonist/Desktop/Workspace/00.itpointlab/Google Drive/StudyGroup/it.4/ANEStudy/cert/Certificates_dev.p12" airTimestamp="true" anePathSet="true" version="1">
+    <buildTarget buildTargetName="device" iosSettingsVersion="2" isCurrent="true" platformId="com.adobe.flexide.multiplatform.ios.platform" provisioningFile="/Users/sewonist/Desktop/Workspace/00.itpointlab/Google Drive/Certificates/Mobileprovision/TestDev.mobileprovision" releasePackageType="ipa-app-store">
+      <airSettings airCertificatePath="/Users/sewonist/Desktop/Workspace/00.itpointlab/Google Drive/Certificates/Certificates_iPhone_dev.p12" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
         <anePaths>
+          <anePathEntry path="libs/AdPOPcornExtension.ane"/>
           <anePathEntry path="libs/FlashLight.ane"/>
-          <anePathEntry path="libs/ScreenWakeUp.ane"/>
         </anePaths>
         <newLaunchParams/>
         <modifiedLaunchParams/>
@@ -67,9 +68,7 @@
     <buildTarget airDownloadURL="" androidSettingsVersion="2" buildTargetName="device" isCurrent="true" platformId="com.adobe.flexide.multiplatform.android.platform">
       <airSettings airCertificatePath="" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
-        <anePaths>
-          <anePathEntry path="libs/FlashLight.ane"/>
-        </anePaths>
+        <anePaths/>
         <newLaunchParams/>
         <modifiedLaunchParams/>
         <newPackagingParams/>

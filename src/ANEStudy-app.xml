@@ -284,7 +284,10 @@
 		]]></InfoAdditions>
     </iPhone>
 
+
+
 <extensions>
-        <extensionID>com.itpointlab.ane.FlashLight</extensionID>
+        <extensionID>com.itpointlab.ane.AdPOPcornExtension</extensionID>
+    <extensionID>com.itpointlab.ane.FlashLight</extensionID>
     </extensions>
 </application>

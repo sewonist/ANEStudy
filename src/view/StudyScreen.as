@@ -1,6 +1,8 @@
 package view
 {
 	import com.itpointlab.ane.FlashLight;
+	import com.itpointlab.ane.adpopcornextension.AdPOPcornExtension;
+	import com.itpointlab.ane.adpopcornextension.RewardServerType;
 	
 	import feathers.controls.Button;
 	import feathers.controls.Screen;
@@ -15,13 +17,15 @@ package view
 		private var _container:ScrollContainer;
 		
 		private var _flashLight:FlashLight;
+		private var _adpopcorn:AdPOPcornExtension;
 		
 		public function StudyScreen()
 		{
 			super();
 			
 			_flashLight = new FlashLight;
-			
+			_adpopcorn = new AdPOPcornExtension;
+			_adpopcorn.initAdPOPcorn( "N1975969617", "a8c94bd3e36c4f09", "testUser", RewardServerType.AdPopcornRewardServerTypeClient );
 		}
 		
 		override protected function initialize():void
@@ -42,7 +46,10 @@ package view
 			addChild(_container);
 			
 			var buttonData:Array = [
-				{label:'isSupport', callback:onClickSupport }
+				{label:'isSupport', callback:onClickSupport },
+				{label:'light on', callback:onClickLightOn},
+				{label:'light off', callback:onClickLightOff },
+				{label:'showOfferwall', callback:onClickShowOfferwall }
 			];
 			
 			for each(var data:Object in buttonData){
@@ -69,7 +76,20 @@ package view
 		}
 		protected function onClickSupport(event:Event):void
 		{
-			
+			trace( '_flashLight.isSupported : ', _flashLight.isSupported );
 		}
+		protected function onClickLightOn(event:Event):void
+		{
+			_flashLight.turnOn = true;
+		}
+		protected function onClickLightOff(event:Event):void
+		{
+			_flashLight.turnOn = false;
+		}
+		protected function onClickShowOfferwall(event:Event):void
+		{
+			_adpopcorn.showOfferwall();
+		}
+		
 	}
 }
